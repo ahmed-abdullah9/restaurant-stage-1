@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  <link rel="stylesheet" href="css/styles.css" role="link">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Reviews</title>
+</head>
+
+<body role="document">
+  <header>
+    <nav role="navigation">
+      <h1><a href="/" role="link" tabindex="1">Restaurant Reviews</a></h1>
+    </nav>
+  </header>
+
+  <main id="maincontent" role="main">
+    <section id="map-container" role='region' tabindex="2">
+      <div id="map" tabindex="3"></div>
+    </section>
+    <section role='region'>
+      <div class="filter-options">
+        <h2>Filter Results</h2>
+        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <option value="all" role="option" tabindex="4">All Neighborhoods</option>
+        </select>
+        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+          <option value="all" role="option" tabindex="5">All Cuisines</option>
+        </select>
+      </div>
+      <ul id="restaurants-list"tabindex="6"></ul>
+    </section>
+  </main>
+
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNK-MamM0kLl-kidTXMQhOGZ8jAMGEHho&libraries=places&callback=initMap"></script>
+  <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('index.js')
+          .then(function(registration) {
+                console.log('Service Worker Work !');
+          }).catch(function() {
+            console.log('Service Worker did not work!');
+          });
+      }
+    </script>
+
+  <footer id="footer" role="contentinfo" tabindex="7">
+    Copyright (c) 2017 <a href="/" aria-label="My files 2 "><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>
